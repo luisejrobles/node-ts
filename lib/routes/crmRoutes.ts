@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
+import { ContactController } from '../controllers/crmControllers';
 
 export class Routes {
+    public contactController: ContactController = new ContactController();
+
     public Routes(app): void {
         app.route('/')
             .get((req: Request, res: Response) => {
@@ -11,42 +14,14 @@ export class Routes {
 
         // Contacts
         app.route('/contact')
-            .get((req: Request, res: Response) => {
-                res.status(200).send({
-                    message: 'GET contact request successful!'
-                })
-            })
+            .get(this.contactController.getContacts)
+            .post(this.contactController.addNewContact)
 
         // Get a specific contact
         app.route('/contact/:id')
-            .get((req: Request, res: Response) => {
-                res.status(200).send({
-                    message: "GET specific contact successful!"
-                })
-            })
+            .get(this.contactController.getContactWithID)
+            .put(this.contactController.updateContact)
+            .delete(this.contactController.deleteContact)
 
-            // POST endpoints
-            // Create a new user
-            .post((req: Request, res: Response) => {
-                res.status(200).send({
-                    message: "POST new contact successfull!"
-                })
-            })
-
-            // PUT
-            // Updating a contact
-            .put((req: Request, res: Response) => {
-                res.status(200).send({
-                    message: 'PUT request successfull!'
-                })
-            })
-
-            // DELETE
-            // Deleting a user
-            .delete((req: Request, res: Response) => {
-                res.status(200).send({
-                    message: 'DELETE request successfull!'
-                })
-            })
     }
 }
