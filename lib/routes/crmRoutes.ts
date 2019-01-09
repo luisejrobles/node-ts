@@ -16,13 +16,11 @@ export class Routes {
         
         // Contact 
         app.route('/contact')
-        .get((req: Request, res: Response) => {                     
-        }, this.contactController.getContacts)
+        .get(this.contactController.getContacts)
         .post(this.contactController.addNewContact);
 
         // Contact detail
         app.route('/contact/:contactId')
-        // get specific contact
         .get(this.contactController.getContactWithID)
         .put(this.contactController.updateContact)
         .delete(this.contactController.deleteContact)

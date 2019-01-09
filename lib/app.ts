@@ -18,7 +18,6 @@ class App {
 
     private config(): void {
         this.app.use(bodyParser.json());
-        console.log('config in!')
         this.app.use(bodyParser.urlencoded({ extended: false }));
     }
 
