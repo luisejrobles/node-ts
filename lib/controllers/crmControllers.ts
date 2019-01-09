@@ -8,7 +8,7 @@ export class ContactController {
 
     public addNewContact(req: Request, res: Response) {
         let newContact = new Contact(req.body);
-        newContact.save((err, contact) => {
+        newContact.save((contact, err) => {
             (err)? res.send(err): res.json(contact);
         });
     }
@@ -32,7 +32,7 @@ export class ContactController {
     }
 
     public deleteContact(req: Request, res: Response) {
-        Contact.deleteOne({ _id: req.params.contactId }, (contact, err) => {
+        Contact.deleteOne({ _id: req.params.contactId }, (err) => {
             (err) ? res.send(err) : res.json({ message: 'Successfully deleted contact!' })
         })
     }
