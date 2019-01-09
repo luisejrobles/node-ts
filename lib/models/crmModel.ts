@@ -9,19 +9,19 @@ export const ContactSchema = new Schema({
     },
     lastName: {
         type: String,
-        required: 'Enter a sencond name'
+        required: 'Enter a first name'
     },
     email: {
-        type: String,
+        type: String            
     },
     company: {
-        type: String
+        type: String            
     },
     phone: {
-        type: Number
+        type: Number            
     },
-    dateCreated: {
+    created_date: {
         type: Date,
         default: Date.now
     }
-})
+});

@@ -8,14 +8,14 @@ export class ContactController {
 
     public addNewContact(req: Request, res: Response) {
         let newContact = new Contact(req.body);
-        newContact.save((contact, err) => {
-            (err) ? res.send(err) : res.send(contact);
-        })
+        newContact.save((err, contact) => {
+            (err)? res.send(err): res.json(contact);
+        });
     }
 
     public getContacts(req: Request, res: Response) {
         Contact.find({}, (contact, err) => {
-            (err) ? res.send(err) : res.send(contact.json);
+            (err) ? res.send(err) : res.json(contact);
         })
     }
 
