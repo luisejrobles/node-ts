@@ -1,6 +1,13 @@
 import app from './app';
+import * as https from 'https';
+import * as fs from 'fs';
 const PORT = 3000;
 
-app.listen( 3000, () => {
-    console.log('Express server is listening at port: ' + PORT );
+const httpOptions = {
+    key: fs.readFileSync('./config/key.pem'),
+    cert: fs.readFileSync('./config/cert.pem')
+}
+
+https.createServer(httpOptions, app).listen(PORT, () => {
+    console.log('Express server is listening in port ' + PORT);
 })

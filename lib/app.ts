@@ -3,11 +3,12 @@ import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
 
 import { Routes } from './routes/crmRoutes';
+import { environment } from '../environments/environment';
 
 class App {
     public app: express.Application;
     public routePRV: Routes = new Routes();
-    public mongoURL: string = 'mongodb://luisejrobles:123456@localhost:27017/CRMdb';
+    public mongoURL: string = environment.dbCredentials;
 
     constructor() {
         this.app = express();
