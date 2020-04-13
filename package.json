@@ -12,8 +12,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "tsc",
-    "dev": "ts-node ./lib/server.ts",
+    "build": "npm run tsc -w",
+    "dev": "npm run start",
     "start": "nodemon ./dist/server.js",
     "prod": "npm run build && npm run start",
     "tsc": "tsc"
